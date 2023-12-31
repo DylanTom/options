@@ -6,12 +6,12 @@ def sqzmom(df, length=20, lengthKC=20, multKC=1.5):
     https://pastebin.com/UCpcX8d7
     """
     # Calculate Bollinger Bands
-    indicator_bb = ta.bbands(close=df["close"], length=length, std=multKC)
+    indicator_bb = ta.bbands(close=df["Close"], length=length, std=multKC)
     df["bb_upper"] = indicator_bb[indicator_bb.columns[2]]
     df["bb_lower"] = indicator_bb[indicator_bb.columns[0]]
 
     # Calculate Keltner Channel
-    indicator_kc = ta.kc(high=df["high"], low=df["low"], close=df["close"], length=lengthKC, scalar=multKC)
+    indicator_kc = ta.kc(high=df["High"], low=df["Low"], close=df["Close"], length=lengthKC, scalar=multKC)
     df["kc_upper"] = indicator_kc[indicator_kc.columns[2]]
     df["kc_lower"] = indicator_kc[indicator_kc.columns[0]]
 
